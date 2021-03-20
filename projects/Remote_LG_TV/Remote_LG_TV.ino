@@ -19,12 +19,16 @@ int btn_POWER = 7;
 int btn_VOLUP = 6;
 int btn_VOLDOWN = 5;
 int btn_INPUT =8;
+int btn_CHUP = 2;
+int btn_CHDOWN = 4;
 void setup() {
   Serial.begin(9600);
   pinMode(btn_POWER, INPUT);
   pinMode(btn_VOLUP, INPUT);
   pinMode(btn_VOLDOWN, INPUT);
   pinMode(btn_INPUT, INPUT);
+  pinMode(btn_CHUP, INPUT);
+  pinMode(btn_CHDOWN, INPUT);
 }
 
 void loop() {
@@ -39,6 +43,12 @@ void loop() {
   }
   if (digitalRead(btn_INPUT) == HIGH) {
     irsend.sendNEC(LG_INPUT, 32);
+  }
+  if (digitalRead(btn_CHUP) == HIGH) {
+    irsend.sendNEC(LG_UP, 32);
+  }
+  if (digitalRead(btn_INPUT) == HIGH) {
+    irsend.sendNEC(LG_DOWN, 32);
   }
   delay(50);
 }
