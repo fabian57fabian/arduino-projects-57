@@ -1,3 +1,6 @@
+# Exclude junk tests projects
+junk_projects
+
 # Prerequisites
 *.d
 
