@@ -1,5 +1,7 @@
 /*  Infrared Remote Controller for LG TV's
  *  Created by Fabian Greavu (github: fabian57fabian)
+ *  Needed libraries:
+ *   - IRremote low version (e.g. 2.0.1)
  *  For Arduino nano and uno.
  *  Copy right Fabian Greavu
  *  see [insert link] for more info
@@ -10,8 +12,8 @@ const unsigned long LG_VOLUP = 0x20DF40BF;
 const unsigned long LG_VOLDOWN = 0x20DFC03F;
 const unsigned long LG_OK = 0x20DF22DD;
 const unsigned long LG_INPUT = 0x20DFD02F;
-const unsigned long LG_UP = 0x20DF02FD;
-const unsigned long LG_DOWN = 0x20DF827D;
+const unsigned long LG_CH_UP = 0x20DF00FF;
+const unsigned long LG_CH_DOWN = 0x20DF807F;
 
 
 IRsend irsend;
@@ -45,10 +47,10 @@ void loop() {
     irsend.sendNEC(LG_INPUT, 32);
   }
   if (digitalRead(btn_CHUP) == HIGH) {
-    irsend.sendNEC(LG_UP, 32);
+    irsend.sendNEC(LG_CH_UP, 32);
   }
-  if (digitalRead(btn_INPUT) == HIGH) {
-    irsend.sendNEC(LG_DOWN, 32);
+  if (digitalRead(btn_CHDOWN) == HIGH) {
+    irsend.sendNEC(LG_CH_DOWN, 32);
   }
   delay(50);
 }
